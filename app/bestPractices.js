@@ -8,28 +8,36 @@ exports = (typeof window === 'undefined') ? global : window;
 
 exports.bestPracticesAnswers = {
   globals : function() {
-    myObject = {
+    this.myObject = {
       name : 'Jory'
     };
 
-    return myObject;
+    return this;
   },
 
   functions : function(flag) {
+    var getValue;
     if (flag) {
-      function getValue() { return 'a'; }
+      getValue = function() { return 'a'; };
     } else {
-      function getValue() { return 'b'; }
+      getValue = function() { return 'b'; };
     }
 
     return getValue();
   },
 
   parseInt : function(num) {
-    return parseInt(num);
+    var numStr = '';
+    var numArr = num.split('');
+    for (var i = 0; i < numArr.length; i++){
+      if(Number.isInteger(+numArr[i])){
+        numStr += +numArr[i];
+      } else break;
+    }
+    return parseInt(+numStr);
   },
 
   identity : function(val1, val2) {
-
+    return val1 === val2;
   }
 };
