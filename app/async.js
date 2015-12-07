@@ -5,15 +5,15 @@ exports = (typeof window === 'undefined') ? global : window;
 // 
 exports.asyncAnswers = {
   async : function(value) {
-    // return new Promise(function(resolve, reject){
-    //     return resolve(value);
-    // });
-    var dfd = $.Deferred();
-    setTimeout(function(){
-        dfd.resolve(value);
-    }, 0);
+    return new Promise(function(resolve, reject){
+        return resolve(value);
+    });
+    // var dfd = $.Deferred();
+    // setTimeout(function(){
+    //     dfd.resolve(value);
+    // }, 0);
 
-    return dfd.promise();
+    // return dfd.promise();
   },
 
   manipulateRemoteData : function(url) {
